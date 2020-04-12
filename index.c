@@ -9,6 +9,10 @@ int main(){
   int i = 0;
   //taking input from the user the number of gifts purchased by each student
   for(i = 0;i < n;i++){
+    scanf("%d\n",&numberOfGifts[i]);
+  }
+  for(i = 0;i < n;i++){
+  printf("%d\n",numberOfGifts[i]);
   }
   return 0;
 }
