@@ -40,9 +40,11 @@ std::cout<<"printing the randomized array"<<std::endl;
 std::cout<<std::endl;
   //now let us create the order the students as we got their index in the billing counter
   char newStudentsArray[n];
+  int newGiftsArray[n];
  //this piece of line code will order the students at the billing counter
   for(int i = 0;i < n;i++){
       newStudentsArray[i] = students[randomIndexArray2[i]];
+      newGiftsArray[i] = numberOfGifts[randomIndexArray2[i]];
   }
 
   //now let us print the order of students at the billing couter
@@ -51,5 +53,33 @@ std::cout<<std::endl;
       std::cout<<newStudentsArray[i]<<" ";
   }
 std::cout<<std::endl;
+
+
+//now we will sort the students according to the number of gifts they brought 
+//similar to the priortity scheduling
+
+for(int i = 0;i<n-1;i++)
+	{
+        
+		for(int j = 0;j< n - i - 1;j++)
+		{
+			if(newGiftsArray[j] < newGiftsArray[j+1])
+			{ 
+                int giftTemp = newGiftsArray[j];
+                newGiftsArray[j] = newGiftsArray[j+1];
+                newGiftsArray[j+1] = giftTemp;
+                
+                char studentTemp = newStudentsArray[j];
+                newStudentsArray[j] = newStudentsArray[j+1];
+                newStudentsArray[j+1] = studentTemp;
+			}
+			
+		}
+	}
+    //now printing the right order ar the billing counter
+    std::cout<<"printing the right order after sorting according to the gifts priortity"<<std::endl;
+    for(int i = 0;i < n;i++){
+        std::cout<<newStudentsArray[i]<<" "<<newGiftsArray[i]<<std::endl;
+    }
   return 0;
 }
