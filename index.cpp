@@ -7,12 +7,49 @@ int main(){
   char students[] = {'a','b','c','d','e','f','g','h','i','j'};
   int n = sizeof(students)/sizeof(students[0]);// this line of code will return the number of elements or length of an array
   int numberOfGifts[n];
-  int i = 0;
   //taking input from the user the number of gifts purchased by each student
-  for(i = 0;i < n;i++){
-      std::cout<<"enter new value"<<std::endl;
+  for(int i = 0;i < n;i++){
+      std::cout<<"enter the gifts took by "<<" "<<students[i]<<std::endl;
     std::cin>>numberOfGifts[i];
   }
-  std::cout<<"entering nuber of gifts purchased by each student completed"<<endl;
+  std::cout<<"entering nuber of gifts purchased by each student completed"<<std::endl;
+
+  std::cout<<"now let us randomize the occurance of the students to he bill counter "<<std::endl;
+  bool randomIndexArray[10] = {0}; //this initialized all the elements to zero
+
+  int randomIndexArray2[n]; //this will store the index at which students will occur to the bill counter
+
+  srand((unsigned)time(NULL));
+  for (int i = 0; i < n; i++){
+      int r=rand()%10;
+    if(!randomIndexArray[r]){
+        randomIndexArray2[i] = r;
+    }
+    else
+      i--;
+    randomIndexArray[r]=1;    
+  }
+
+
+  //this will the index od students at the billing counter as they occur randomly
+std::cout<<std::endl;
+std::cout<<"printing the randomized array"<<std::endl;
+  for(int i = 0;i < n;i++){
+      std::cout<<randomIndexArray2[i]<<" ";
+  }
+std::cout<<std::endl;
+  //now let us create the order the students as we got their index in the billing counter
+  char newStudentsArray[n];
+ //this piece of line code will order the students at the billing counter
+  for(int i = 0;i < n;i++){
+      newStudentsArray[i] = students[randomIndexArray2[i]];
+  }
+
+  //now let us print the order of students at the billing couter
+  std::cout<<"printing the students order at billing counter"<<std::endl;
+  for(int i = 0;i < n;i++){
+      std::cout<<newStudentsArray[i]<<" ";
+  }
+std::cout<<std::endl;
   return 0;
 }
